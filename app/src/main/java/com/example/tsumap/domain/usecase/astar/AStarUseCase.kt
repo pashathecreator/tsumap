@@ -1,8 +1,19 @@
-package com.example.tsumap.useCases
+package com.example.tsumap.domain.usecase.astar
 
 import java.util.PriorityQueue
 import kotlin.math.abs
 import kotlin.math.max
+
+data class Node(
+    val x: Int,
+    val y: Int,
+    var g: Int,
+    var h: Int,
+    var parent: Node? = null
+) {
+    val f: Int
+        get() = g + h
+}
 
 class AStarUseCase(
     private val grid: Array<IntArray>
@@ -82,13 +93,3 @@ class AStarUseCase(
     }
 }
 
-data class Node(
-    val x: Int,
-    val y: Int,
-    var g: Int,
-    var h: Int,
-    var parent: Node? = null
-) {
-    val f: Int
-        get() = g + h
-}
